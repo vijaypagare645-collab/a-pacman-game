@@ -83,7 +83,7 @@ class Pacman:
 
 #+----------starting part----------+
 def play_game():
-    global btn1,btn2,btn3,cnv,cnv1,cnv2, game_running 
+    global btn1,btn2,btn3,cnv,cnv1,cnv2, game_running,frame1,frame2
     cnv = Canvas(root,width = 1000, height = 600,
                  highlightbackground="#e0935b", background = "#e0935b")
     cnv.place(x=0,y=0)
@@ -97,9 +97,13 @@ def play_game():
     cnv2.create_text(70,190,text = "play",font = ("Arial",23), fill = "#b7190e")
     cnv2.create_text(260,190,text = "game",font = ("Arial",23),fill = "#b7190e")
     cnv2.create_text(165,232, text = "mode",font = ("Arial",23), fill = "#b7190e")
+    frame1 = Frame(root,width = 144,height = 54,background = "#ffa021")
+    frame1.place(x=428,y=318)
     btn1 = Button(root,text = "time",font = ("Arial",16),foreground = "#c41717",
                 background = "#ffa021",command = lambda : set_mode("time"))
     btn1.place(x=430,y=320, width = 140, height = 50)
+    frame2 = Frame(root,width = 144,height = 54,background = "#ffa021")
+    frame2.place(x=428,y=378)
     btn2 = Button(root,text = "touch",font = ("Arial",16),foreground = "#c41717",
                 background = "#ffa021",command = lambda : set_mode("touch"))
     btn2.place(x=430,y=380, width = 140, height = 50)
@@ -231,11 +235,18 @@ def menue():
     play_game()
 
 def set_mode (value):
-    global mode 
+    global mode,frame1,frame2 
     mode = value
+    if mode == "time":
+        frame1.config(background = "blue")
+        frame2.config(background = "#ffa021")
+    else :
+        frame1.config(background = "#ffa021")
+        frame2.config(background = "blue")
+
 
 def play():
-    global player,  game_running,score_text,btn3,cnv
+    global player,  game_running,score_text,btn3,cnv,frame1,frame2
     game_running = True
     cnv.delete("all")
     cnv1.delete("all")
@@ -243,14 +254,16 @@ def play():
     cnv.destroy()
     cnv1.destroy()
     cnv2.destroy()
+    frame1.destroy()
     btn1.destroy()
+    frame2.destroy()
     btn2.destroy()
     btn3.destroy()
     restart()
 
 def restart():
     global player, score, dots, rdots,x
-    global game_running, score_text, time, Time
+    global game_running, score_text, time
 
     game_running = False
 
