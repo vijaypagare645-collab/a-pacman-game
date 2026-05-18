@@ -87,8 +87,8 @@ def play_game():
     cnv = Canvas(root,width = 1000, height = 600,
                  highlightbackground="#e0935b", background = "#e0935b")
     cnv.place(x=0,y=0)
-    cnv1 = Canvas(root, width = 380, height = 550,
-                  highlightbackground="#ff914d",background = "#ff914d")
+    cnv1 = Canvas(root, width = 380, height = 550,highlightthickness = 2,
+                  highlightbackground="#ff3131",background = "#ff8336")
     cnv1.place(x=310,y=25)
     cnv2 = Canvas(root,width = 330, height = 490,
                   highlightbackground="#ff751f", background = "#ff751f")
@@ -99,16 +99,16 @@ def play_game():
     cnv2.create_text(165,232, text = "mode",font = ("Arial",23), fill = "#b7190e")
     frame1 = Frame(root,width = 144,height = 54,background = "#ffa021")
     frame1.place(x=428,y=318)
-    btn1 = Button(root,text = "time",font = ("Arial",16),foreground = "#c41717",
-                background = "#ffa021",command = lambda : set_mode("time"))
+    btn1 = Button(root,text = "time",font = ("Arial",16),foreground = "#c41717",activeforeground="#075a83",
+                background = "#ffa021",command = lambda : set_mode("time"),activebackground = "#fff500")
     btn1.place(x=430,y=320, width = 140, height = 50)
     frame2 = Frame(root,width = 144,height = 54,background = "#ffa021")
     frame2.place(x=428,y=378)
-    btn2 = Button(root,text = "touch",font = ("Arial",16),foreground = "#c41717",
-                background = "#ffa021",command = lambda : set_mode("touch"))
+    btn2 = Button(root,text = "touch",font = ("Arial",16),foreground = "#c41717",activeforeground="#075a83",
+                background = "#ffa021",command = lambda : set_mode("touch"),activebackground = "#fff500")
     btn2.place(x=430,y=380, width = 140, height = 50)
-    btn3 = Button(root,text = "play",font = ("Arial",16),foreground = "#c41717",
-                command = play ,background = "#ffa021")
+    btn3 = Button(root,text = "play",font = ("Arial",16),foreground = "#c41717",activeforeground="#075a83",
+                command = play ,background = "#ffa021",activebackground = "#fff500")
     btn3.place(x=430,y=440, width = 140, height = 50)
 
 # the ending part//game_over()
@@ -124,10 +124,10 @@ def game_over():
     cnv4.create_text(280,100,text ="Game Over",font = ("Arial",56),fill = "#ffcd6b")
     cnv4.create_text(280,175,text ="score : "+ str(score)
                      ,font = ("Arial",32),fill = "#b7190e")
-    btn4 = Button(root,text = "Menue",font = ("Arial",16),command = menue,
-                background = "#ffa021",foreground = "#c41717")
+    btn4 = Button(root,text = "Menue",font = ("Arial",16),command = menue,activeforeground="#075a83",
+                background = "#ffa021",foreground = "#c41717",activebackground = "#fff500")
     btn4.place(x=310,y=350,width = 140, height = 50)
-    btn5 = Button(root,text = "restart",font = ("Arial",16),
+    btn5 = Button(root,text = "restart",font = ("Arial",16),activebackground = "#fff500",
                 command = restart,background = "#ffa021",foreground = "#c41717")
     btn5.place(x=530,y=350,width = 140, height = 50)
 
@@ -238,11 +238,11 @@ def set_mode (value):
     global mode,frame1,frame2 
     mode = value
     if mode == "time":
-        frame1.config(background = "blue")
+        frame1.config(background = "#c41717")
         frame2.config(background = "#ffa021")
     else :
         frame1.config(background = "#ffa021")
-        frame2.config(background = "blue")
+        frame2.config(background = "#c41717")
 
 
 def play():
@@ -338,8 +338,8 @@ root.configure(background="black")
 bg1 = Canvas (root, width = 1000 , height = 600,
                background = "#ffb47e",highlightbackground = "#ffb47e")
 bg1.place(x = 0, y = 0)
-bg2 = Canvas(root, width = 900 ,height= 540 , 
-             background = "#e0935b",highlightbackground = "#e0935b")
+bg2 = Canvas(root, width = 900 ,height= 540 ,
+             background = "#e0935b",highlightbackground = "#ff3131")
 bg2.place(x=50,y =30)
 canvas = Canvas(root , width = 750, height = 450,
              background  = "#d27937",highlightbackground = "#d27937")
